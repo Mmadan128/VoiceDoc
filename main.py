@@ -25,7 +25,7 @@ def load_ai_model():
     if not GOOGLE_API_KEY:
         raise ValueError("GOOGLE_API_KEY for Gemini not found!")
     
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.1)
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", temperature=0.1)
     parser = PydanticOutputParser(pydantic_object=TriageResponse)
     return llm, parser
 
