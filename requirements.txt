@@ -1,0 +1,11 @@
+streamlit
+python-dotenv
+SpeechRecognition
+pydub
+langchain
+langchain-google-genai
+pydantic
+pandas
+requests
+streamlit-geolocation
+geopy
