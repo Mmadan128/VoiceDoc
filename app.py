@@ -39,7 +39,7 @@ except ValueError as e:
 
 # --- 2. STREAMLIT USER INTERFACE ---
 st.title("🏥 VoiceDoc – LIVE AI Health Assistant")
-st.caption("Powered by Gemini 1.5 Flash & Google Maps Platform")
+st.caption("Powered by Gemini 2.5 Flash & Google Maps Platform")
 
 # Sidebar
 st.sidebar.title("Configuration")
