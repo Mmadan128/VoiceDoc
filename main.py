@@ -9,12 +9,9 @@ import pandas as pd
 import requests
 from math import radians, cos, sin, asin, sqrt
 
-# Load API keys from the .env file
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 
-# --- Pydantic Model for Structured AI Output ---
-# We define it here so it can be imported by the app for type checking.
 class TriageResponse(BaseModel):
     urgency: str = Field(description="Classify urgency: 'Emergency', 'Urgent', or 'Routine'.")
     possible_causes: List[str] = Field(description="A list of 2-3 potential, general causes.")
@@ -23,14 +20,12 @@ class TriageResponse(BaseModel):
     recommended_tests: Optional[List[str]] = Field(description="Common diagnostic tests a doctor might recommend.")
     explanation: str = Field(description="A brief, clear explanation for the overall assessment.")
 
-# --- Core Logic Functions ---
-
 def load_ai_model():
     """Loads and returns the initialized Gemini model and the response parser."""
     if not GOOGLE_API_KEY:
         raise ValueError("GOOGLE_API_KEY for Gemini not found!")
     
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", temperature=0.1)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.1)
     parser = PydanticOutputParser(pydantic_object=TriageResponse)
     return llm, parser
 
